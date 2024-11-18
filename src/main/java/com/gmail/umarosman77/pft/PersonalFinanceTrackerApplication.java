@@ -1,4 +1,4 @@
-package com.gmail.umarosman77.PersonalFinanceTracker;
+package com.gmail.umarosman77.pft;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,5 +9,4 @@ public class PersonalFinanceTrackerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(PersonalFinanceTrackerApplication.class, args);
 	}
-
 }
