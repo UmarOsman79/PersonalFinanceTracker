@@ -1,6 +1,5 @@
 package com.gmail.umarosman77.pft.controller;
 
-import com.gmail.umarosman77.pft.exception.PftException;
 import com.gmail.umarosman77.pft.models.User;
 import com.gmail.umarosman77.pft.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
