@@ -4,9 +4,13 @@ import com.gmail.umarosman77.pft.entities.IncomeEntity;
 import com.gmail.umarosman77.pft.models.Income;
 import com.gmail.umarosman77.pft.repository.IncomeRepository;
 import com.gmail.umarosman77.pft.services.IncomeService;
+import com.gmail.umarosman77.pft.util.PftUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.sql.Date;
+import java.util.List;
 
 @Service
 public class IncomeServiceImpl implements IncomeService {
@@ -23,5 +27,15 @@ public class IncomeServiceImpl implements IncomeService {
 		ModelMapper modelMapper = new ModelMapper();
 		IncomeEntity incomeEntity = modelMapper.map(income, IncomeEntity.class);
 		return modelMapper.map(incomeRepository.save(incomeEntity), Income.class);
+	}
+
+	@Override
+	public List<Income> getAllIncome() {
+		return PftUtil.mapList(incomeRepository.findAll(), Income.class);
+	}
+
+	@Override
+	public List<Income> getIncomeInCurrentCalendarMonth() {
+		return PftUtil.mapList(incomeRepository.findIncomeInCurrentCalendarMonth(Date.valueOf("")), Income.class);
 	}
 }

@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.Date;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -12,4 +14,8 @@ import lombok.NoArgsConstructor;
 public class Income {
 
 	private Integer id;
+	private String description;
+	private String comments;
+	private Double value;
+	private Date createdDate;
 }

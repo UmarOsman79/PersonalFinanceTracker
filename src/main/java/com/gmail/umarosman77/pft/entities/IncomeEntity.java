@@ -1,13 +1,12 @@
 package com.gmail.umarosman77.pft.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
+import java.util.Date;
 
 @Data
 @Builder
@@ -19,4 +18,17 @@ public class IncomeEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+
+	@Column(name = "description")
+	private String description;
+
+	@Column(name = "comments")
+	private String comments;
+
+	@Column(name = "value")
+	private Double value;
+
+	@Temporal(value = TemporalType.DATE)
+	@Column(name = "created_date")
+	private Date createdDate;
 }

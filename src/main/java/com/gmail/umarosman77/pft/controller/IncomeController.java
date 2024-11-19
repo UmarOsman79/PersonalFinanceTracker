@@ -7,7 +7,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("incomeController")
+import java.util.List;
+
+@RestController
 @RequestMapping("/income")
 public class IncomeController {
 
@@ -21,5 +23,15 @@ public class IncomeController {
 	@PostMapping
 	public ResponseEntity<Income> addIncome(@RequestBody Income income) {
 		return new ResponseEntity<>(incomeService.addIncome(income), HttpStatus.OK);
+	}
+
+	@GetMapping("/")
+	public ResponseEntity<List<Income>> getAllIncome() {
+		return new ResponseEntity<>(incomeService.getAllIncome(), HttpStatus.OK);
+	}
+
+	@GetMapping("/current_month")
+	public ResponseEntity<List<Income>> getIncomeInCurrentCalendarMonth() {
+		return new ResponseEntity<>(incomeService.getIncomeInCurrentCalendarMonth(), HttpStatus.OK);
 	}
 }
