@@ -42,4 +42,9 @@ public class UserServiceImpl implements UserService {
 	public List<User> getAllUsers() {
 		return PftUtil.mapList(userRepository.findAll(), User.class);
 	}
+
+	@Override
+	public void deleteUser(User user) {
+		userRepository.delete(new ModelMapper().map(user, UserEntity.class));
+	}
 }
