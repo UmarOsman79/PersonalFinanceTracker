@@ -3,7 +3,6 @@ package com.gmail.umarosman77.pft.util;
 import org.modelmapper.ModelMapper;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class PftUtil {
 
@@ -16,6 +15,6 @@ public class PftUtil {
 		return source
 				.stream()
 				.map(element -> modelMapper.map(element, targetClass))
-				.collect(Collectors.toList());
+				.toList();
 	}
 }
