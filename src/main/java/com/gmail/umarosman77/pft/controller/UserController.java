@@ -8,6 +8,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 //Parameter for @RestController is to name the bean
 //Because we're using @RestController and not @Controller, don't need to add @ResponseBody to each method
 @RestController("userController")
@@ -25,5 +27,10 @@ public class UserController {
 	@GetMapping("/{id}")
 	public ResponseEntity<User> getUser(@PathVariable int id) {
 		return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<User>> getAllUsers() {
+		return new ResponseEntity<>(userService.getAllUsers(), HttpStatus.OK);
 	}
 }

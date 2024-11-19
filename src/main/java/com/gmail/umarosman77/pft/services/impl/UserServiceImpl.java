@@ -4,6 +4,7 @@ import com.gmail.umarosman77.pft.entities.UserEntity;
 import com.gmail.umarosman77.pft.models.User;
 import com.gmail.umarosman77.pft.repository.UserRepository;
 import com.gmail.umarosman77.pft.services.UserService;
+import com.gmail.umarosman77.pft.util.PftUtil;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,13 +12,18 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.text.MessageFormat;
+import java.util.List;
 import java.util.Optional;
 
 @Service
 public class UserServiceImpl implements UserService {
 
-	@Autowired
 	private UserRepository userRepository;
+
+	@Autowired
+	public UserServiceImpl(UserRepository userRepository) {
+		this.userRepository = userRepository;
+	}
 
 	@Override
 	public User getUser(int id) {
@@ -30,5 +36,10 @@ public class UserServiceImpl implements UserService {
 	public User createUser(User user) {
 		UserEntity userEntity = new ModelMapper().map(user, UserEntity.class);
 		return new ModelMapper().map(userRepository.save(userEntity), User.class);
+	}
+
+	@Override
+	public List<User> getAllUsers() {
+		return PftUtil.mapList(userRepository.findAll(), User.class);
 	}
 }
