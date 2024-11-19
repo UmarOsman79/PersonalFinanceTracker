@@ -1,7 +1,6 @@
 package com.gmail.umarosman77.pft.services.impl;
 
 import com.gmail.umarosman77.pft.entities.UserEntity;
-import com.gmail.umarosman77.pft.exception.PftException;
 import com.gmail.umarosman77.pft.models.User;
 import com.gmail.umarosman77.pft.repository.UserRepository;
 import com.gmail.umarosman77.pft.services.UserService;
