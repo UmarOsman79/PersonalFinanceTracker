@@ -6,9 +6,13 @@ import java.util.List;
 
 public interface IncomeService {
 
+	Income getIncome(Integer id);
+
 	Income addIncome(Income income);
 
 	List<Income> getAllIncome();
 
 	List<Income> getIncomeInCurrentCalendarMonth();
+
+	void deleteIncome(Integer id);
 }

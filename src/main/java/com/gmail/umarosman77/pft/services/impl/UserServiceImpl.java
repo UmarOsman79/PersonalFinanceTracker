@@ -44,7 +44,8 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public void deleteUser(User user) {
+	public void deleteUser(Integer id) {
+		User user = this.getUser(id);
 		userRepository.delete(new ModelMapper().map(user, UserEntity.class));
 	}
 }

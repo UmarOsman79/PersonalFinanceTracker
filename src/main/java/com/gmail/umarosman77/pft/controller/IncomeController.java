@@ -20,12 +20,17 @@ public class IncomeController {
 		this.incomeService = incomeService;
 	}
 
+	@GetMapping
+	public ResponseEntity<Income> getIncome(@PathVariable Integer id) {
+		return new ResponseEntity<>(incomeService.getIncome(id), HttpStatus.OK);
+	}
+
 	@PostMapping
 	public ResponseEntity<Income> addIncome(@RequestBody Income income) {
 		return new ResponseEntity<>(incomeService.addIncome(income), HttpStatus.OK);
 	}
 
-	@GetMapping("/")
+	@GetMapping
 	public ResponseEntity<List<Income>> getAllIncome() {
 		return new ResponseEntity<>(incomeService.getAllIncome(), HttpStatus.OK);
 	}
@@ -33,5 +38,11 @@ public class IncomeController {
 	@GetMapping("/current-month")
 	public ResponseEntity<List<Income>> getIncomeInCurrentCalendarMonth() {
 		return new ResponseEntity<>(incomeService.getIncomeInCurrentCalendarMonth(), HttpStatus.OK);
+	}
+
+	@DeleteMapping
+	public ResponseEntity<String> deleteIncome(@PathVariable Integer id) {
+		incomeService.deleteIncome(id);
+		return ResponseEntity.ok().build();
 	}
 }
