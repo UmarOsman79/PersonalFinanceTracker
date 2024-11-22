@@ -6,7 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Builder
@@ -30,5 +30,5 @@ public class IncomeEntity {
 
 	@Temporal(value = TemporalType.DATE)
 	@Column(name = "created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 }

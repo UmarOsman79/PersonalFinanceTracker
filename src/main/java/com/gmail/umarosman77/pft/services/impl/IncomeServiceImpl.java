@@ -9,7 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -18,7 +18,7 @@ public class IncomeServiceImpl implements IncomeService {
 	private final IncomeRepository incomeRepository;
 
 	@Autowired
-	public IncomeServiceImpl(IncomeRepository incomeRepository){
+	public IncomeServiceImpl(IncomeRepository incomeRepository) {
 		this.incomeRepository = incomeRepository;
 	}
 
@@ -36,6 +36,7 @@ public class IncomeServiceImpl implements IncomeService {
 
 	@Override
 	public List<Income> getIncomeInCurrentCalendarMonth() {
-		return PftUtil.mapList(incomeRepository.findIncomeInCurrentCalendarMonth(Date.valueOf("")), Income.class);
+		LocalDate currentDate = LocalDate.of(LocalDate.now().getYear(), LocalDate.now().getMonth(), 1);
+		return PftUtil.mapList(incomeRepository.findIncomeInCurrentCalendarMonth(currentDate), Income.class);
 	}
 }

@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @AllArgsConstructor
@@ -17,5 +17,5 @@ public class Income {
 	private String description;
 	private String comments;
 	private Double value;
-	private Date createdDate;
+	private LocalDate createdDate = LocalDate.now();
 }

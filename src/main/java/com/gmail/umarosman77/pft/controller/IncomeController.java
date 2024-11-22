@@ -30,7 +30,7 @@ public class IncomeController {
 		return new ResponseEntity<>(incomeService.getAllIncome(), HttpStatus.OK);
 	}
 
-	@GetMapping("/current_month")
+	@GetMapping("/current-month")
 	public ResponseEntity<List<Income>> getIncomeInCurrentCalendarMonth() {
 		return new ResponseEntity<>(incomeService.getIncomeInCurrentCalendarMonth(), HttpStatus.OK);
 	}
